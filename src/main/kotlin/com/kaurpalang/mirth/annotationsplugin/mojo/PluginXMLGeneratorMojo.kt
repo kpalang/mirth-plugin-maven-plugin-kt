@@ -14,7 +14,6 @@ import org.w3c.dom.Document
 import org.w3c.dom.Element
 import java.io.File
 import java.nio.file.InvalidPathException
-import java.nio.file.Paths
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.transform.OutputKeys
 import javax.xml.transform.TransformerFactory
@@ -60,14 +59,14 @@ class PluginXMLGeneratorMojo : AbstractMojo() {
         val aggregatorFile = File(Constants.AGGREGATION_FILE_PATH)
 
         if (!aggregatorFile.exists()) {
-            log.error("Aggregator file does not exist at ${aggregatorFile.absolutePath}");
-            return;
+            log.error("Aggregator file does not exist at ${aggregatorFile.absolutePath}")
+            return
         }
 
         val pluginState = json.decodeFromString<PluginState>(aggregatorFile.readText(Charsets.UTF_8))
         pluginState.runtimeClientLibraries.addAll(getRuntimeLibrariesList("client"))
         pluginState.runtimeSharedLibraries.addAll(getRuntimeLibrariesList("shared"))
-        pluginState.runtimeServerLibraries.addAll(getRuntimeLibrariesList("client"))
+        pluginState.runtimeServerLibraries.addAll(getRuntimeLibrariesList("server"))
 
         val documentBuilderFactory = DocumentBuilderFactory.newInstance()
         val documentBuilder = documentBuilderFactory.newDocumentBuilder()
@@ -127,11 +126,10 @@ class PluginXMLGeneratorMojo : AbstractMojo() {
         // Add API providers
         pluginState.apiProviders.forEach { apiProvider -> rootElement.appendChild(getApiProvidersChildElement(document, apiProvider)) }
 
-
         val transformerFactory = TransformerFactory.newInstance()
         val transformer = transformerFactory.newTransformer()
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes")
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4")
 
         val domSource = DOMSource(document)
         val streamResult = StreamResult(File(pluginXmlOutputPath))
@@ -140,7 +138,7 @@ class PluginXMLGeneratorMojo : AbstractMojo() {
         if (aggregatorFile.exists() && aggregatorFile.delete()) {
             log.info("Aggregation file deleted")
         } else {
-            log.warn("Aggregation file not deleted from ${aggregatorFile.absolutePath}. You should delete it manually to avoid conflicts!");
+            log.warn("Aggregation file not deleted from ${aggregatorFile.absolutePath}. You should delete it manually to avoid conflicts!")
         }
     }
 
@@ -165,7 +163,7 @@ class PluginXMLGeneratorMojo : AbstractMojo() {
         return submoduleLibrariesDirectory.toFile()
             .walkTopDown()
             .filter { file -> file.isFile }
-            .filter { file -> file.endsWith(".jar") }
+            .filter { file -> file.name.endsWith(".jar") }
             .sorted()
             .map { file -> LibraryModel(submodule.uppercase(), "libs/${file.name}") }
             .toSet()

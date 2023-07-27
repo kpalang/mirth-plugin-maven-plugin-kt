@@ -11,10 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-
-        <kotlin.version>1.8.21</kotlin.version>
+        <kotlin.version>1.9.0</kotlin.version>
 
         <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
 
@@ -23,12 +20,9 @@
         <maven-plugin-plugin.version>3.9.0</maven-plugin-plugin.version>
 
         <commons.version>2.11.0</commons.version>
-        <lombok.version>1.18.24</lombok.version>
-        <jackson.version>2.13.4.1</jackson.version>
         <autoservice.version>1.0.1</autoservice.version>
         <kotlinx.version>1.5.1</kotlinx.version>
     </properties>
-
 
     <dependencies>
         <dependency>
@@ -96,14 +90,22 @@
                         <goals>
                             <goal>compile</goal>
                         </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <source>src/main/kotlin</source>
-                                <source>target/generated-sources/annotations</source>
-                            </sourceDirs>
-                        </configuration>
                     </execution>
                 </executions>
+
+                <configuration>
+                    <compilerPlugins>
+                        <plugin>kotlinx-serialization</plugin>
+                    </compilerPlugins>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-serialization</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>

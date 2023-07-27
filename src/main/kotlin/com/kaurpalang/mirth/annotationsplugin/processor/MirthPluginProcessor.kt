@@ -13,7 +13,6 @@ import java.io.File
 import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.Element
-import javax.lang.model.element.ElementKind
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 
@@ -40,11 +39,11 @@ class MirthPluginProcessor : AbstractProcessor() {
         processApiProviders(roundEnv)
 
         if (roundEnv.processingOver()) handleEndOfProcessing()
-        return false;
+        return false
     }
 
     /**
-     * Method iterates over classes with param annotation, and adds them to specified target set
+     * Method iterates over classes with param annotation and adds them to specified target set
      *
      * @param roundEnv Round environment
      * @param annotation Annotation to process
@@ -56,7 +55,7 @@ class MirthPluginProcessor : AbstractProcessor() {
         targetSet: MutableSet<String>
     ) {
         for (annotatedElement in roundEnv.getElementsAnnotatedWith(annotation)) {
-            if (annotatedElement.kind !== ElementKind.CLASS) {
+            if (!annotatedElement.kind.isClass) {
                 error(annotatedElement, "Only classes can be annotated with @${annotation.simpleName}")
             } else {
                 targetSet.add(annotatedElement.asType().toString())
@@ -71,17 +70,16 @@ class MirthPluginProcessor : AbstractProcessor() {
      */
     private fun processApiProviders(roundEnv: RoundEnvironment) {
         roundEnv.getElementsAnnotatedWith(MirthApiProvider::class.java).forEach { element -> run {
-            if (element.kind != ElementKind.CLASS || element.kind != ElementKind.INTERFACE) {
-                error(element, "Only classes can be annotated with @${MirthApiProvider::class.java.simpleName}")
+            if (!element.kind.isClass && !element.kind.isInterface) {
+                error(element, "Only classes or interfaces can be annotated with @${MirthApiProvider::class.java.simpleName}. Type ${element.kind} is not applicable")
             } else {
                 val apiProvider = element.getAnnotation(MirthApiProvider::class.java)
                 apiProviders.add(
-                    ApiProviderModel(apiProvider.type, apiProvider.type.toString())
+                    ApiProviderModel(apiProvider.type, element.asType().toString())
                 )
             }
         } }
     }
-
 
     /**
      * This method runs after current processing round has completed.

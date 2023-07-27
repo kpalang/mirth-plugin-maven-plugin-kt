@@ -16,16 +16,12 @@ class AggregationFileMojo : AbstractMojo() {
         val aggregatorFile = File(Constants.AGGREGATION_FILE_PATH)
         log.info("Aggregation file path: ${aggregatorFile.absolutePath}")
 
-        try {
-            if (!aggregatorFile.exists()) {
-                if (!aggregatorFile.createNewFile()) {
-                    log.error("Aggregation file creation failed!")
-                }
-            } else {
-                log.warn("Aggregation file already present at ${aggregatorFile.absolutePath}")
+        if (!aggregatorFile.exists()) {
+            if (!aggregatorFile.createNewFile()) {
+                log.error("Aggregation file creation failed!")
             }
-        } catch (e: Exception) {
-            log.error(e)
+        } else {
+            log.warn("Aggregation file already present at ${aggregatorFile.absolutePath}")
         }
     }
 }
