@@ -1,6 +1,6 @@
 # mirth-plugin-maven-plugin-kt
 
-> Note: `mirth-plugin-maven-plugin-kt` is a successor/continuation to the previous [mirth-plugin-maven-plugin](https://github.com/kpalang/mirth-plugin-maven-plugin). Tt's a rewrite in, as you might guess, Kotlin.
+> Note: `mirth-plugin-maven-plugin-kt` is a successor/continuation to the previous [mirth-plugin-maven-plugin](https://github.com/kpalang/mirth-plugin-maven-plugin). It's a rewrite in, as you might guess, Kotlin.
 
 A maven plugin to simplify and automate [NextGen Connect](https://github.com/nextgenhealthcare/connect) plugin development.
 
