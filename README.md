@@ -66,13 +66,13 @@ Purpose is to generate a file to store all found classes before annotation proce
 #### generate-plugin-xml
 Purpose is to generate the actual plugin.xml file.
 
-| Parameter | Description                                                                        | Default                      |
-| ------ |------------------------------------------------------------------------------------|------------------------------|
-| \<name> | Plugin's name                                                                      | `default_name`               |
-| \<author> | Plugin's author                                                                    | `default_author`             |
-| \<pluginVersion> | Plugin version                                                                     | `default_plugin_version`     |
-| \<mirthVersion> | Mirth versions this plugin is compatible with                                      | `default_mirth_version`      |
-| \<url> | Plugin's website                                                                   | blank                        |
-| \<description> | Plugin's description                                                               | blank                        |
-| \<path> | The name of the directory that will be extracted into Mirth's extensions directory | `default_path`               |
-| \<pluginXmlOutputPath> | Where to put the generated `plugin.xml`                                             | `plugin.xml` |
+| Parameter | Description                                                                        | Default                  |
+| ------ |------------------------------------------------------------------------------------|--------------------------|
+| \<name> | Plugin's name                                                                      | `default_name`           |
+| \<author> | Plugin's author                                                                    | `default_author`         |
+| \<pluginVersion> | Plugin version                                                                     | `default_plugin_version` |
+| \<mirthVersion> | Mirth versions this plugin is compatible with                                      | `default_mirth_version`  |
+| \<url> | Plugin's website                                                                   | blank                    |
+| \<description> | Plugin's description                                                               | blank                    |
+| \<path> | The name of the directory that will be extracted into Mirth's extensions directory | `default_path`           |
+| \<pluginXmlOutputPath> | Where to put the generated `plugin.xml`                                             | `/plugin.xml`            |
