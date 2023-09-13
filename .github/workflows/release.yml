@@ -20,4 +20,7 @@ jobs:
           server-password: REPSY_TOKEN
 
       - name: Build with Maven
-        run: mvn -B deploy --file pom.xml
+        run: ./mvnw -B deploy --file pom.xml
+        env:
+          REPSY_USER: ${{ secrets.REPSY_USER }}
+          REPSY_TOKEN: ${{ secrets.REPSY_TOKEN }}
