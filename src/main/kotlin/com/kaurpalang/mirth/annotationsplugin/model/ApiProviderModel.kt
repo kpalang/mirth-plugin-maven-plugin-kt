@@ -9,15 +9,15 @@ data class ApiProviderModel(
     val name: String,
 ) {
     override fun equals(other: Any?): Boolean {
-        if (other == this) {
-            return true;
+        if (this === other) {
+            return true
         }
 
         if (other !is ApiProviderModel) {
-            return false;
+            return false
         }
 
-        return other.name == this.name && other.type.compareTo(this.type) == 0;
+        return other.name == this.name && other.type.compareTo(this.type) == 0
     }
 
     override fun hashCode() = name.hashCode() + type.hashCode()
