@@ -21,3 +21,6 @@ jobs:
 
       - name: Build with Maven
         run: ./mvnw -B deploy --file pom.xml
+        env:
+          REPSY_USER: ${{ secrets.REPSY_USER }}
+          REPSY_TOKEN: ${{ secrets.REPSY_TOKEN }}
