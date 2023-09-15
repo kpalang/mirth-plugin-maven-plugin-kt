@@ -6,19 +6,40 @@ A maven plugin to simplify and automate [NextGen Connect](https://github.com/nex
 
 ---
 ## Installation
+`pom.xml`
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-```xml
-<repository>
-    <id>repsy</id>
-    <url>https://repo.repsy.io/mvn/kpalang/default</url>
-</repository>
-```
-```xml
-<dependency>
-  <groupId>com.kaurpalang</groupId>
-  <artifactId>mirth-plugin-maven-plugin</artifactId>
-  <version>2.0.1</version>
-</dependency>
+    ...
+
+    <repositories>
+        <repository>
+            <id>repsy</id>
+            <url>https://repo.repsy.io/mvn/kpalang/default</url>
+        </repository>
+    </repositories>
+
+    ...
+
+     <dependencies>
+        <dependency>
+            <groupId>com.kaurpalang</groupId>
+            <artifactId>mirth-plugin-maven-plugin</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+     </dependencies>
+
+    ...
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repsy-default</id>
+            <url>https://repo.repsy.io/mvn/kpalang/default</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>
 ```
 ---
 ## Usage
