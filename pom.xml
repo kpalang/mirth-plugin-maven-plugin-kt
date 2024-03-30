@@ -38,7 +38,7 @@
 
         <commons.version>2.11.0</commons.version>
         <autoservice.version>1.0.1</autoservice.version>
-        <kotlinx.version>1.5.1</kotlinx.version>
+        <kotlinx.version>1.6.3</kotlinx.version>
     </properties>
 
     <dependencies>
