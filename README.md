@@ -27,7 +27,7 @@ A maven plugin to simplify and automate [NextGen Connect](https://github.com/nex
         <dependency>
             <groupId>com.kaurpalang</groupId>
             <artifactId>mirth-plugin-maven-plugin</artifactId>
-            <version>2.0.3</version>
+            <version>2.0.4</version>
         </dependency>
      </dependencies>
 
