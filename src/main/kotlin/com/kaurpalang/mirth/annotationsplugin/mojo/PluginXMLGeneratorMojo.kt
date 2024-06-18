@@ -97,7 +97,7 @@ class PluginXMLGeneratorMojo : AbstractMojo() {
         }
 
         // Add libraries
-        val mirthPluginProject = project!!.parent
+        val mirthPluginProject = project!!
         val mirthPluginModules = mirthPluginProject.modules
             .filter { s -> s != project.artifactId }
             .toSet()
@@ -144,7 +144,7 @@ class PluginXMLGeneratorMojo : AbstractMojo() {
 
     private fun getRuntimeLibrariesList(submodule: String): Set<LibraryModel> {
         val submoduleLibrariesDirectory = Path(
-            project!!.parent.basedir.absolutePath,
+            project!!.basedir.absolutePath,
             "libs",
             "runtime",
             submodule
