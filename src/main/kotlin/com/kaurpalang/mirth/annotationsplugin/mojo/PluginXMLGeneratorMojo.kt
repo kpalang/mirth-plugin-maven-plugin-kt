@@ -31,28 +31,28 @@ class PluginXMLGeneratorMojo : AbstractMojo() {
     @Parameter(defaultValue = "\${project}")
     private val project: MavenProject? = null
 
-    @Parameter(property = "name", defaultValue = "default_name")
+    @Parameter(property = "name", defaultValue = "\${mirth.plugin.name}")
     private val name: String? = null
 
-    @Parameter(property = "author", defaultValue = "default_author")
+    @Parameter(property = "author", defaultValue = "\${mirth.plugin.author}")
     private val author: String? = null
 
-    @Parameter(property = "pluginVersion", defaultValue = "default_plugin_version")
+    @Parameter(property = "pluginVersion", defaultValue = "\${mirth.plugin.version}")
     private val pluginVersion: String? = null
 
-    @Parameter(property = "mirthVersion", defaultValue = "default_mirth_version")
+    @Parameter(property = "mirthVersion", defaultValue = "\${mirth.plugin.compatible_versions}")
     private val mirthVersion: String? = null
 
-    @Parameter(property = "url")
+    @Parameter(property = "url", defaultValue = "\${mirth.plugin.url}")
     private val url: String? = null
 
-    @Parameter(property = "description")
+    @Parameter(property = "description", defaultValue = "\${mirth.plugin.description}")
     private val description: String? = null
 
-    @Parameter(property = "path", defaultValue = "default_path")
+    @Parameter(property = "path", defaultValue = "\${mirth.plugin.path}")
     private val path: String? = null
 
-    @Parameter(property = "pluginXmlOutputPath", defaultValue = "plugin.xml")
+    @Parameter(property = "pluginXmlOutputPath", defaultValue = "\${mirth.plugin.xml_path}")
     private val pluginXmlOutputPath: String = "plugin.xml"
 
     override fun execute() {
