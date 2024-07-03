@@ -97,3 +97,4 @@ Purpose is to generate the actual plugin.xml file.
 | \<description> | Plugin's description                                                               | blank                    |
 | \<path> | The name of the directory that will be extracted into Mirth's extensions directory | `default_path`           |
 | \<pluginXmlOutputPath> | Where to put the generated `plugin.xml`                                             | `/plugin.xml`            |
+
