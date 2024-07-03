@@ -104,7 +104,7 @@ class PluginXMLGeneratorMojo : AbstractMojo() {
 
         val mirthPluginBuildDir = mirthPluginProject.basedir.toPath()
 
-        // I can't remember what this is for...
+        // Include the compiled artifacts as library elements in plugin.xml
         mirthPluginModules.forEach { module -> run {
             val mirthPluginSubmoduleDirectory = Path(mirthPluginBuildDir.toString(), module, "target")
             if (!mirthPluginSubmoduleDirectory.exists()) return@forEach
